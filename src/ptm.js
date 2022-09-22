@@ -1,5 +1,5 @@
 const rp = require("request-promise-native");
-const { URL } = require("url");
+const { Url } = require("url");
 const { hexToBase64, base64toHex } = require("./util");
 
 /**
@@ -16,7 +16,7 @@ function ptm(web3, { ipcPath, privateUrl, tlsSettings }) {
 
   // tls settings fot https connections
   if (ipcPath === undefined && privateEndpoint) {
-    const { protocol } = new URL(privateEndpoint);
+    const { protocol } = new Url(privateEndpoint);
     if (protocol === "https:" && tlsSettings) {
       if (tlsSettings.key) {
         tlsOptions.clientKey = tlsSettings.key;
