@@ -13,7 +13,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const events = require("node:events");
+import { EventEmitter } from 'events';
+// const events = require("node:events");
 
 const Protocol = {
   HTTP: "HTTP",
@@ -231,7 +232,7 @@ function PrivateSubscription(web3, privacyGroupId, filter) {
 }
 
 // get functions from EventEmitter
-PrivateSubscription.prototype = Object.create(events.EventEmitter.prototype);
+PrivateSubscription.prototype = Object.create(EventEmitter.prototype);
 PrivateSubscription.prototype.constructor = PrivateSubscription;
 
 PrivateSubscription.prototype.subscribe = async function subscribe() {
@@ -252,7 +253,7 @@ PrivateSubscription.prototype.subscribe = async function subscribe() {
 
 PrivateSubscription.prototype.on = function on(eventName, callback) {
   // Register the callback
-  events.EventEmitter.prototype.on.call(this, eventName, callback);
+  EventEmitter.prototype.on.call(this, eventName, callback);
 
   // Get past logs if necessary once the user has added a callback
   if (this.getPast && eventName === "data") {
