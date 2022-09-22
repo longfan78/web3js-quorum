@@ -231,7 +231,7 @@ function PrivateSubscription(web3, privacyGroupId, filter) {
 }
 
 // get functions from EventEmitter
-PrivateSubscription.prototype = Object.create(events.EventEmitter);
+PrivateSubscription.prototype = Object.create(events.prototype);
 PrivateSubscription.prototype.constructor = PrivateSubscription;
 
 PrivateSubscription.prototype.subscribe = async function subscribe() {
@@ -252,7 +252,7 @@ PrivateSubscription.prototype.subscribe = async function subscribe() {
 
 PrivateSubscription.prototype.on = function on(eventName, callback) {
   // Register the callback
-  events.EventEmitter.on.call(this, eventName, callback);
+  events.prototype.EventEmitter.on.call(this, eventName, callback);
 
   // Get past logs if necessary once the user has added a callback
   if (this.getPast && eventName === "data") {
