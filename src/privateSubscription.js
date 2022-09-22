@@ -13,7 +13,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-const events = require("events");
+const events = require("node:events");
 
 const Protocol = {
   HTTP: "HTTP",
